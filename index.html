@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arun Hitaishi — UX Manager & Product Designer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#F7F3ED;
+    --surface:#FBF8F3;
+    --text:#111111;
+    --muted:#666666;
+    --border:#E7E0D7;
+    --accent:#111111;
+    --radius:24px;
+    --max-width:1320px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+}
+
+.container{
+    width:min(92%, var(--max-width));
+    margin:0 auto;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* -------------------- NAV -------------------- */
+
+.navbar{
+    padding:32px 0;
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(12px);
+    background:rgba(247,243,237,.8);
+    z-index:100;
+}
+
+.nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1rem;
+    font-weight:600;
+    letter-spacing:-0.02em;
+}
+
+.nav-links{
+    display:flex;
+    gap:40px;
+}
+
+.nav-links a{
+    color:var(--muted);
+    font-size:.95rem;
+    transition:.3s ease;
+}
+
+.nav-links a:hover{
+    color:var(--text);
+}
+
+/* -------------------- HERO -------------------- */
+
+.hero{
+    padding:120px 0 160px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:120px;
+    align-items:end;
+}
+
+.eyebrow{
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    color:var(--muted);
+    margin-bottom:24px;
+}
+
+.hero h1{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(4rem, 8vw, 7rem);
+    line-height:.95;
+    letter-spacing:-0.05em;
+    margin-bottom:24px;
+}
+
+.hero-title{
+    font-size:1.25rem;
+    font-weight:500;
+    margin-bottom:24px;
+}
+
+.hero-description{
+    max-width:640px;
+    font-size:1.15rem;
+    color:var(--muted);
+    margin-bottom:48px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 24px;
+    border-radius:999px;
+    font-weight:500;
+    transition:.3s ease;
+}
+
+.btn-primary{
+    background:#111;
+    color:#fff;
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.btn-secondary{
+    border:1px solid var(--border);
+    background:transparent;
+}
+
+.btn-secondary:hover{
+    background:#fff;
+}
+
+.hero-side{
+    border-left:1px solid var(--border);
+    padding-left:48px;
+}
+
+.meta-block{
+    margin-bottom:48px;
+}
+
+.meta-label{
+    color:var(--muted);
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    margin-bottom:10px;
+}
+
+.meta-value{
+    font-size:2rem;
+    font-weight:600;
+}
+
+.company-list{
+    display:grid;
+    gap:12px;
+}
+
+.company-list span{
+    font-size:1rem;
+}
+
+/* -------------------- SECTION -------------------- */
+
+.section{
+    padding:120px 0;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:64px;
+}
+
+.section-title{
+    font-family:'Playfair Display', serif;
+    font-size:3rem;
+    letter-spacing:-0.03em;
+}
+
+.section-subtitle{
+    color:var(--muted);
+}
+
+/* -------------------- FEATURED WORK -------------------- */
+
+.featured-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+}
+
+.project-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:40px;
+    min-height:320px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:.35s ease;
+}
+
+.project-card:hover{
+    transform:translateY(-6px);
+    background:#fff;
+}
+
+.project-number{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.project-card h3{
+    font-size:2rem;
+    letter-spacing:-0.04em;
+    margin-bottom:12px;
+}
+
+.project-card p{
+    color:var(--muted);
+}
+
+.project-link{
+    margin-top:32px;
+    font-weight:500;
+}
+
+/* -------------------- ADDITIONAL WORK -------------------- */
+
+.additional-work{
+    margin-top:80px;
+}
+
+.work-list{
+    border-top:1px solid var(--border);
+}
+
+.work-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.work-item h4{
+    font-size:1.2rem;
+}
+
+.work-item span{
+    color:var(--muted);
+}
+
+/* -------------------- ABOUT -------------------- */
+
+.about-card{
+    max-width:900px;
+}
+
+.about-card p{
+    font-size:1.2rem;
+    color:var(--muted);
+    margin-top:24px;
+}
+
+/* -------------------- CONTACT -------------------- */
+
+.contact{
+    padding:140px 0 120px;
+}
+
+.contact-box{
+    background:#111;
+    color:white;
+    border-radius:32px;
+    padding:80px;
+}
+
+.contact-box h2{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(3rem,6vw,5rem);
+    line-height:1;
+    margin-bottom:24px;
+}
+
+.contact-box p{
+    max-width:620px;
+    color:rgba(255,255,255,.75);
+    margin-bottom:40px;
+}
+
+.contact-box .btn{
+    background:white;
+    color:black;
+}
+
+/* -------------------- FOOTER -------------------- */
+
+.footer{
+    padding:40px 0 80px;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    color:var(--muted);
+    font-size:.95rem;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+
+@media(max-width:900px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        gap:64px;
+    }
+
+    .hero-side{
+        border-left:none;
+        border-top:1px solid var(--border);
+        padding-left:0;
+        padding-top:40px;
+    }
+
+    .featured-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .contact-box{
+        padding:48px 32px;
+    }
+
+    .nav-links{
+        gap:20px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        gap:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container nav-inner">
+        <div class="logo">Arun Hitaishi</div>
+
+        <nav class="nav-links">
+            <a href="#work">Work</a>
+            <a href="resume.html">Resume</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div>
+            <div class="eyebrow">Portfolio 2026</div>
+
+            <h1>Arun<br>Hitaishi</h1>
+
+            <div class="hero-title">
+                UX Manager & Product Designer
+            </div>
+
+            <p class="hero-description">
+                Designing AI-powered, commerce and enterprise products through research,
+                strategy and systems thinking.
+                <br><br>
+                Over 10 years of experience building experiences across Smart Home,
+                Retail, Commerce, Fintech and Enterprise platforms.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#work" class="btn btn-primary">
+                    View Work
+                </a>
+
+                <a href="resume.html" class="btn btn-secondary">
+                    Download Resume
+                </a>
+            </div>
+        </div>
+
+        <aside class="hero-side">
+
+            <div class="meta-block">
+                <div class="meta-label">Experience</div>
+                <div class="meta-value">10+ Years</div>
+            </div>
+
+            <div class="meta-block">
+                <div class="meta-label">Companies</div>
+
+                <div class="company-list">
+                    <span>Publicis Sapient</span>
+                    <span>Jio</span>
+                    <span>Bijak</span>
+                    <span>Chqbook</span>
+                    <span>Builder.ai</span>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+</section>
+
+<section class="section" id="work">
+    <div class="container">
+
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Featured Work</h2>
+            </div>
+
+            <div class="section-subtitle">
+                Selected projects spanning Smart Home, Commerce, Fintech and Enterprise platforms.
+            </div>
+        </div>
+
+        <div class="featured-grid">
+
+            <article class="project-card">
+                <img src="Images/jiohome-cover.jpg" alt="JioHome" class="project-image">
+                <div class="project-number">01</div>
+
+                <div>
+                    <h3>JioHome</h3>
+                    <p>
+                        Leading the redesign of a connected smart-home ecosystem across onboarding,
+                        automation, WiFi management and device experiences.
+                    </p>
+                </div>
+
+                <a href="jiohome.html" class="project-link">View Case Study →</a>
+            </article>
+
+            <article class="project-card">
+                <img src="Images/jiomart-cover.jpg" alt="JioMart" class="project-image">
+
+<div class="project-number">02</div>
+
+                <div>
+                    <h3>JioMart</h3>
+                    <p>
+                        Redesigning omnichannel grocery shopping experiences across discovery,
+                        search, checkout and quick-commerce journeys.
+                    </p>
+                </div>
+
+                <a href="jiomart.html" class="project-link">View Case Study →</a>
+            </article>
+
+            <article class="project-card">
+                <img src="Images/bijak-cover.jpg" alt="Bijak" class="project-image">
+                <div class="project-number">03</div>
+
+                <div>
+                    <h3>Bijak</h3>
+                    <p>
+                        Building digital infrastructure for India's agricultural trade ecosystem
+                        through marketplace, credit and payment experiences.
+                    </p>
+                </div>
+
+                <a href="bijak.html" class="project-link">View Case Study →</a>
+            </article>
+
+            <article class="project-card">
+                <img src="Images/justfresh-cover.jpg" alt="Just Fresh" class="project-image">
+
+<div class="project-number">04</div>
+
+                <div>
+                    <h3>Just Fresh</h3>
+                    <p>
+                        Designing grocery commerce experiences focused on discovery,
+                        checkout and order management.
+                    </p>
+                </div>
+
+                <a href="justfresh.html" class="project-link">View Case Study →</a>
+            </article>
+
+        </div>
+
+        <div class="additional-work">
+
+            <div class="section-header">
+                <h2 class="section-title">Additional Work</h2>
+            </div>
+
+            <div class="work-list">
+
+                <a href="builderai.html" class="work-item">
+    <h4>Builder.ai</h4>
+    <span>Product Design</span>
+</a>
+
+                <a href="chargeerp.html" class="work-item">
+    <h4>chargeERP</h4>
+    <span>Enterprise UX</span>
+</a>
+
+                <div class="work-item">
+    <h4>Chqbook</h4>
+    <span>Coming Soon</span>
+</div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="container">
+
+        <div class="about-card">
+            <h2 class="section-title">About</h2>
+
+            <p>
+                I am a self-taught UX Manager and Product Designer with 10+ years
+                of experience designing products across AI, Retail, Telecom,
+                Fintech, Smart Home and Enterprise domains.
+                <br><br>
+                My work combines user research, product strategy and systems thinking
+                to create experiences that are intuitive, scalable and
+                business-impactful.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+
+        <div class="contact-box">
+            <h2>Let's create meaningful products.</h2>
+
+            <p>
+                Available for product leadership, UX strategy,
+                design consulting, and collaborative opportunities.
+            </p>
+
+            <a href="mailto:arunhitaishi.ux@gmail.com" class="btn">
+                Get In Touch
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div>© 2026 Arun Hitaishi</div>
+        <div>UX Manager • Product Designer • Design Strategist</div>
+    </div>
+</footer>
+
+</body>
+</html>

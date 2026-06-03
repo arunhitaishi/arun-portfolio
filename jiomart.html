@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JioMart — UX Case Study</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#F7F3ED;
+    --surface:#FBF8F4;
+    --text:#111111;
+    --muted:#666666;
+    --border:#E7DED3;
+    --max-width:1280px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+}
+
+.container{
+    width:min(92%, var(--max-width));
+    margin:0 auto;
+}
+
+section{
+    padding:120px 0;
+}
+
+.nav{
+    padding:32px 0;
+}
+
+.back-link{
+    color:var(--text);
+    text-decoration:none;
+    font-size:0.95rem;
+    font-weight:500;
+}
+
+.back-link:hover{
+    opacity:.7;
+}
+
+.eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:.78rem;
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:80px;
+    align-items:center;
+}
+
+h1{
+    font-size:clamp(4rem,9vw,8rem);
+    line-height:.95;
+    letter-spacing:-0.06em;
+    font-weight:700;
+}
+
+.hero-subtitle{
+    font-size:1rem;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--muted);
+    margin-top:24px;
+}
+
+.hero-tagline{
+    font-size:clamp(1.2rem,2vw,1.6rem);
+    max-width:700px;
+    margin-top:40px;
+    color:#333;
+}
+
+.hero-meta{
+    display:flex;
+    gap:60px;
+    margin-top:50px;
+    flex-wrap:wrap;
+}
+
+.meta-label{
+    color:var(--muted);
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+}
+
+.meta-value{
+    margin-top:8px;
+    font-weight:600;
+}
+
+.image-placeholder{
+    width:100%;
+    min-height:560px;
+    border-radius:32px;
+    border:1px solid var(--border);
+    background:#EEE7DD;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#7A726A;
+    font-size:.95rem;
+}
+
+h2{
+    font-size:clamp(2.2rem,4vw,4.5rem);
+    line-height:1.05;
+    letter-spacing:-0.05em;
+    margin-bottom:24px;
+}
+
+.section-intro{
+    max-width:760px;
+    color:var(--muted);
+}
+
+.two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    margin-top:60px;
+}
+
+.card{
+    padding:32px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:24px;
+}
+
+.card h3{
+    margin-bottom:12px;
+    font-size:1.3rem;
+}
+
+.card p{
+    color:var(--muted);
+}
+
+.grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:50px;
+}
+
+.large-image{
+    margin-top:50px;
+}
+
+.large-image .image-placeholder{
+    min-height:700px;
+}
+
+.feature{
+    margin-top:120px;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.feature:nth-child(even) .feature-grid{
+    grid-template-columns:1.1fr .9fr;
+}
+
+.feature-copy p{
+    color:var(--muted);
+}
+
+.feature-image .image-placeholder{
+    min-height:520px;
+}
+
+.outcomes-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+    margin-top:50px;
+}
+
+.outcome{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:32px;
+}
+
+.outcome h3{
+    margin-bottom:10px;
+}
+
+.outcome p{
+    color:var(--muted);
+}
+
+.reflection{
+    max-width:850px;
+}
+
+.reflection p{
+    color:var(--muted);
+    margin-bottom:24px;
+}
+
+footer{
+    border-top:1px solid var(--border);
+    padding:60px 0;
+}
+
+.footer-text{
+    color:var(--muted);
+}
+
+@media(max-width:1024px){
+
+    .hero-grid,
+    .two-col,
+    .feature-grid,
+    .feature:nth-child(even) .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:768px){
+
+    section{
+        padding:80px 0;
+    }
+
+    .grid-4,
+    .outcomes-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+
+    .image-placeholder{
+        min-height:320px;
+    }
+
+    .large-image .image-placeholder{
+        min-height:420px;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Work</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+
+            <div>
+                <div class="eyebrow">Design Manager</div>
+
+                <h1>JioMart</h1>
+
+                <div class="hero-subtitle">
+                    Omnichannel Commerce Experience
+                </div>
+
+                <p class="hero-tagline">
+                    Redesigning omnichannel grocery shopping experiences across discovery, search, checkout and quick-commerce journeys.
+                </p>
+
+                <div class="hero-meta">
+                    <div>
+                        <div class="meta-label">Role</div>
+                        <div class="meta-value">Design Manager</div>
+                    </div>
+
+                    <div>
+                        <div class="meta-label">Project</div>
+                        <div class="meta-value">JioMart</div>
+                    </div>
+
+                    <div>
+                        <div class="meta-label">Focus</div>
+                        <div class="meta-value">Commerce Optimization</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                Hero Screenshot Placeholder
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="eyebrow">Overview</div>
+
+        <h2>Designing for everyday grocery behavior at scale</h2>
+
+        <p class="section-intro">
+            JioMart serves a broad spectrum of shopping needs—from planned weekly grocery purchases to urgent quick-commerce orders. This initiative focused on simplifying the end-to-end customer experience while creating a stronger foundation for scalable omnichannel commerce.
+        </p>
+
+        <div class="two-col">
+
+            <div class="card">
+                <h3>Business Context</h3>
+                <p>
+                    Grocery commerce requires customers to make frequent purchasing decisions across large catalogs while balancing convenience, speed, trust and delivery expectations.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Project Goals</h3>
+                <p>
+                    Improve discoverability, streamline checkout journeys, support repeat purchases and create consistency across shopping experiences.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>My Responsibilities</h3>
+                <p>
+                    Design leadership, UX strategy, research synthesis, stakeholder alignment, interaction design direction and cross-functional collaboration.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Scope</h3>
+                <p>
+                    Discovery, search, category navigation, product evaluation, cart, checkout, order tracking and quick-commerce workflows.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="eyebrow">Problem Space</div>
+
+        <h2>Complex journeys across a high-frequency commerce ecosystem</h2>
+
+        <div class="grid-4">
+
+            <div class="card">
+                <h3>Discovery Challenges</h3>
+                <p>
+                    Large catalogs made product exploration difficult for many shoppers.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Search Inefficiencies</h3>
+                <p>
+                    Search often became the primary path to purchase, increasing expectations for speed and relevance.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Checkout Friction</h3>
+                <p>
+                    Delivery choices, addresses and payments created avoidable complexity.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Retention Opportunities</h3>
+                <p>
+                    Repeat purchasing behaviors were not consistently supported across journeys.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="large-image">
+            <div class="image-placeholder">
+                Problem Mapping & Journey Visualization Placeholder
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="eyebrow">Research & Insights</div>
+
+        <h2>Understanding how customers actually shop</h2>
+
+        <p class="section-intro">
+            Research focused on identifying recurring shopping behaviors, friction points and expectations unique to grocery and quick-commerce experiences.
+        </p>
+
+        <div class="two-col">
+
+            <div class="card">
+                <h3>Customer Journey Analysis</h3>
+                <p>
+                    Mapped customer behavior across browsing, replenishment, search-driven and urgency-based purchasing journeys.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>User Behavior Patterns</h3>
+                <p>
+                    Customers frequently prioritized speed, familiarity and confidence over exploration.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Competitive Benchmarking</h3>
+                <p>
+                    Evaluated leading grocery, retail and quick-commerce platforms to identify emerging commerce patterns.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Commerce Best Practices</h3>
+                <p>
+                    Studied proven approaches for search, navigation, product evaluation and checkout optimization.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="large-image">
+            <div class="image-placeholder">
+                Research Artifacts Placeholder
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="eyebrow">Design Strategy</div>
+
+        <h2>Creating simpler paths to purchase</h2>
+
+        <div class="grid-4">
+
+            <div class="card">
+                <h3>Discovery Improvements</h3>
+                <p>
+                    Faster access to products, categories and frequently purchased items.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Search Optimization</h3>
+                <p>
+                    Designed for retrieval speed, clarity and repeat purchase behavior.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Category Navigation</h3>
+                <p>
+                    Reduced complexity while supporting large product catalogs.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Checkout Simplification</h3>
+                <p>
+                    Streamlined critical decision points before order completion.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="large-image">
+            <div class="image-placeholder">
+                Strategy Framework Placeholder
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="eyebrow">Key UX Initiatives</div>
+
+        <h2>Reimagining core commerce experiences</h2>
+
+        <div class="feature">
+
+            <div class="feature-grid">
+
+                <div class="feature-copy">
+                    <h3>Homepage Redesign</h3>
+                    <p>
+                        Prioritized shopping intent, repeat purchasing behaviors and category access to help customers start shopping faster.
+                    </p>
+                </div>
+
+                <div class="feature-image">
+                    <div class="image-placeholder">
+                        Homepage Placeholder
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-grid">
+
+                <div class="feature-image">
+                    <div class="image-placeholder">
+                        Product Listing Placeholder
+                    </div>
+                </div>
+
+                <div class="feature-copy">
+                    <h3>Product Listing Experience</h3>
+                    <p>
+                        Improved scanning, filtering and comparison experiences across large product inventories.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-grid">
+
+                <div class="feature-copy">
+                    <h3>Product Detail Pages</h3>
+                    <p>
+                        Simplified product evaluation through clearer information hierarchy and purchase-focused content.
+                    </p>
+                </div>
+
+                <div class="feature-image">
+                    <div class="image-placeholder">
+                        PDP Placeholder
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-grid">
+
+                <div class="feature-image">
+                    <div class="image-placeholder">
+                        Search Experience Placeholder
+                    </div>
+                </div>
+
+                <div class="feature-copy">
+                    <h3>Search Experience</h3>
+                    <p>
+                        Treated search as a primary shopping pathway, supporting both planned and repeat purchases.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-grid">
+
+                <div class="feature-copy">
+                    <h3>Cart & Checkout</h3>
+                    <p>
+                        Reduced friction across basket review, address selection, delivery preferences and payment decisions.
+                    </p>
+                </div>
+
+                <div class="feature-image">
+                    <div class="image-placeholder">
+                        Checkout Placeholder
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-grid">
+
+                <div class="feature-image">
+                    <div class="image-placeholder">
+                        Order Tracking Placeholder
+                    </div>
+                </div>
+
+                <div class="feature-copy">
+                    <h3>Order Tracking</h3>
+                    <p>
+                        Improved transparency and confidence through clearer post-purchase communication.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="eyebrow">Outcomes</div>
+
+        <h2>Creating a stronger commerce foundation</h2>
+
+        <div class="outcomes-grid">
+
+            <div class="outcome">
+                <h3>Improved Discoverability</h3>
+                <p>
+                    Simplified navigation and product access reduced effort throughout shopping journeys.
+                </p>
+            </div>
+
+            <div class="outcome">
+                <h3>Reduced Friction</h3>
+                <p>
+                    Cleaner workflows helped customers move through critical purchase stages more efficiently.
+                </p>
+            </div>
+
+            <div class="outcome">
+                <h3>Better Conversion Opportunities</h3>
+                <p>
+                    Clearer information architecture supported stronger purchase decision-making.
+                </p>
+            </div>
+
+            <div class="outcome">
+                <h3>Stronger Customer Experience</h3>
+                <p>
+                    Consistent interactions created a more seamless omnichannel experience.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="eyebrow">Reflection</div>
+
+        <h2>Designing for scale, speed and customer trust</h2>
+
+        <div class="reflection">
+
+            <p>
+                Grocery commerce behaves differently from traditional ecommerce. Customers often arrive with clear intent, familiar products and an expectation of speed. Designing for those behaviors required balancing efficiency with discoverability.
+            </p>
+
+            <p>
+                One of the most valuable lessons from this initiative was understanding how search, navigation and fulfillment expectations shape customer confidence throughout the purchase journey.
+            </p>
+
+            <p>
+                Success depended on close collaboration across product, engineering, business and operations teams. Aligning customer needs with commercial goals helped create solutions that could scale across a rapidly evolving commerce ecosystem.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p class="footer-text">
+            JioMart — Omnichannel Commerce Experience · Design Manager Case Study
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

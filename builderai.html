@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Builder.ai — UX Case Study</title>
+
+<style>
+:root{
+    --bg:#F7F3ED;
+    --text:#111111;
+    --muted:#6B6B6B;
+    --line:rgba(0,0,0,.08);
+    --card:#FBF8F3;
+    --accent:#111111;
+    --max:1240px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Segoe UI",sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(92%, var(--max));
+    margin:0 auto;
+}
+
+section{
+    padding:120px 0;
+}
+
+.section-header{
+    margin-bottom:56px;
+}
+
+.section-label{
+    font-size:.8rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-size:clamp(2.4rem,5vw,5rem);
+    line-height:.95;
+    letter-spacing:-0.05em;
+    max-width:900px;
+}
+
+.section-intro{
+    margin-top:24px;
+    max-width:720px;
+    color:var(--muted);
+    font-size:1.08rem;
+}
+
+.nav{
+    padding:32px 0;
+}
+
+.back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--muted);
+    font-size:.95rem;
+    transition:.25s ease;
+}
+
+.back-link:hover{
+    color:var(--text);
+}
+
+.hero{
+    min-height:88vh;
+    display:flex;
+    align-items:center;
+    padding-top:40px;
+    padding-bottom:120px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:80px;
+    align-items:end;
+}
+
+.eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:var(--muted);
+    font-size:.78rem;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(4rem,11vw,9rem);
+    line-height:.88;
+    letter-spacing:-0.08em;
+    margin-bottom:28px;
+}
+
+.hero-subtitle{
+    font-size:clamp(1.25rem,2vw,1.6rem);
+    color:var(--muted);
+    max-width:650px;
+}
+
+.hero-meta{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+}
+
+.meta-item{
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.meta-label{
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--muted);
+    margin-bottom:8px;
+}
+
+.meta-value{
+    font-size:1.05rem;
+}
+
+.image-block{
+    width:100%;
+    border-radius:32px;
+    overflow:hidden;
+    background:
+    linear-gradient(135deg,#e6dfd5,#d9d0c4);
+    border:1px solid rgba(0,0,0,.06);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(0,0,0,.35);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.8rem;
+}
+
+.image-xl{
+    height:720px;
+}
+
+.image-lg{
+    height:560px;
+}
+
+.image-md{
+    height:420px;
+}
+
+.overview-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.editorial-copy{
+    font-size:clamp(1.2rem,2vw,1.65rem);
+    line-height:1.55;
+    color:#232323;
+}
+
+.editorial-copy p + p{
+    margin-top:24px;
+}
+
+.challenge-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+.card{
+    background:rgba(255,255,255,.45);
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:34px;
+}
+
+.card h3{
+    font-size:1.25rem;
+    margin-bottom:14px;
+}
+
+.card p{
+    color:var(--muted);
+}
+
+.insights-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.insight{
+    padding:30px;
+    border-top:1px solid var(--line);
+}
+
+.insight-number{
+    font-size:3rem;
+    line-height:1;
+    margin-bottom:12px;
+    letter-spacing:-0.06em;
+}
+
+.insight-title{
+    font-size:1.1rem;
+    margin-bottom:8px;
+}
+
+.insight p{
+    color:var(--muted);
+}
+
+.strategy{
+    text-align:center;
+}
+
+.strategy-list{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:48px;
+}
+
+.strategy-pill{
+    padding:16px 24px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.5);
+    font-size:1rem;
+}
+
+.initiatives{
+    display:grid;
+    gap:120px;
+}
+
+.initiative{
+    display:grid;
+    grid-template-columns:1fr 1.15fr;
+    gap:60px;
+    align-items:center;
+}
+
+.initiative:nth-child(even){
+    grid-template-columns:1.15fr 1fr;
+}
+
+.initiative:nth-child(even) .initiative-content{
+    order:2;
+}
+
+.initiative h3{
+    font-size:clamp(2rem,4vw,3.4rem);
+    line-height:1;
+    letter-spacing:-0.05em;
+    margin-bottom:18px;
+}
+
+.initiative p{
+    color:var(--muted);
+    font-size:1.05rem;
+    max-width:520px;
+}
+
+.outcomes-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.outcome{
+    padding:34px;
+    border-top:1px solid var(--line);
+}
+
+.outcome h4{
+    font-size:1.3rem;
+    margin-bottom:10px;
+}
+
+.outcome p{
+    color:var(--muted);
+}
+
+.reflection{
+    max-width:900px;
+}
+
+.reflection p{
+    font-size:clamp(1.25rem,2vw,1.7rem);
+    color:#222;
+    line-height:1.6;
+}
+
+.footer-nav{
+    padding:140px 0 80px;
+    text-align:center;
+}
+
+.footer-nav a{
+    font-size:1rem;
+    color:var(--muted);
+}
+
+.footer-nav a:hover{
+    color:var(--text);
+}
+
+.divider{
+    width:100%;
+    height:1px;
+    background:var(--line);
+}
+
+@media (max-width:1024px){
+
+    .hero-grid,
+    .overview-grid,
+    .initiative,
+    .initiative:nth-child(even){
+        grid-template-columns:1fr;
+    }
+
+    .initiative:nth-child(even) .initiative-content{
+        order:0;
+    }
+
+    .challenge-grid,
+    .outcomes-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media (max-width:768px){
+
+    section{
+        padding:90px 0;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+
+    .hero-meta{
+        border-left:none;
+        padding-left:0;
+    }
+
+    .challenge-grid,
+    .insights-grid,
+    .outcomes-grid{
+        grid-template-columns:1fr;
+    }
+
+    .image-xl{
+        height:460px;
+    }
+
+    .image-lg{
+        height:380px;
+    }
+
+    .image-md{
+        height:300px;
+    }
+
+    .card{
+        padding:28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <nav class="nav">
+        <a href="index.html" class="back-link">
+            ← Back to Work
+        </a>
+    </nav>
+
+</div>
+
+<header class="hero">
+    <div class="container">
+        <div class="hero-grid">
+
+            <div>
+                <div class="eyebrow">Product Designer</div>
+
+                <h1>Builder.ai</h1>
+
+                <p class="hero-subtitle">
+                    Designing AI-assisted software creation experiences for entrepreneurs
+                    and non-technical founders.
+                </p>
+            </div>
+
+            <div class="hero-meta">
+
+                <div class="meta-item">
+                    <div class="meta-label">Role</div>
+                    <div class="meta-value">Product Designer</div>
+                </div>
+
+                <div class="meta-item">
+                    <div class="meta-label">Platform</div>
+                    <div class="meta-value">AI-Powered Product Building</div>
+                </div>
+
+                <div class="meta-item">
+                    <div class="meta-label">Focus</div>
+                    <div class="meta-value">Transparency, Workflow Design & Customer Experience</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="image-block image-xl">
+            Builder.ai Hero Screenshot
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Overview</div>
+            <h2 class="section-title">
+                Making software creation accessible to everyone.
+            </h2>
+        </div>
+
+        <div class="overview-grid">
+
+            <div class="editorial-copy">
+                <p>
+                    Builder.ai enables entrepreneurs and businesses to create
+                    software products without requiring deep technical expertise.
+                </p>
+
+                <p>
+                    I worked on customer-facing dashboards, project visibility,
+                    workflow management, and communication experiences while
+                    collaborating closely with product, engineering, and
+                    business stakeholders.
+                </p>
+            </div>
+
+            <div class="image-block image-md">
+                Product Overview
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Challenge</div>
+            <h2 class="section-title">
+                Turning complex software development into a simple customer experience.
+            </h2>
+        </div>
+
+        <div class="challenge-grid">
+
+            <div class="card">
+                <h3>Limited Visibility</h3>
+                <p>
+                    Customers often struggled to understand project progress
+                    and delivery status.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Workflow Complexity</h3>
+                <p>
+                    Development processes contained technical concepts that
+                    felt intimidating to non-technical users.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Trust & Confidence</h3>
+                <p>
+                    Users needed greater transparency and reassurance throughout
+                    the product-building journey.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Research & Insights</div>
+            <h2 class="section-title">
+                Understanding expectations, uncertainty and decision-making.
+            </h2>
+        </div>
+
+        <div class="insights-grid">
+
+            <div class="insight">
+                <div class="insight-number">01</div>
+                <div class="insight-title">Customer Interviews</div>
+                <p>
+                    Explored customer concerns around visibility,
+                    communication and delivery confidence.
+                </p>
+            </div>
+
+            <div class="insight">
+                <div class="insight-number">02</div>
+                <div class="insight-title">Workflow Mapping</div>
+                <p>
+                    Mapped end-to-end product creation journeys to identify
+                    friction and ambiguity.
+                </p>
+            </div>
+
+            <div class="insight">
+                <div class="insight-number">03</div>
+                <div class="insight-title">Usability Testing</div>
+                <p>
+                    Evaluated customer comprehension of project tracking
+                    and workflow experiences.
+                </p>
+            </div>
+
+            <div class="insight">
+                <div class="insight-number">04</div>
+                <div class="insight-title">Stakeholder Workshops</div>
+                <p>
+                    Aligned business, engineering and customer goals into
+                    a shared product vision.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container strategy">
+
+        <div class="section-header">
+            <div class="section-label">Design Strategy</div>
+            <h2 class="section-title">
+                Reduce complexity. Increase confidence.
+            </h2>
+        </div>
+
+        <div class="strategy-list">
+            <div class="strategy-pill">Simplify Complexity</div>
+            <div class="strategy-pill">Improve Transparency</div>
+            <div class="strategy-pill">Reduce Cognitive Load</div>
+            <div class="strategy-pill">Increase Customer Confidence</div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Key UX Initiatives</div>
+            <h2 class="section-title">
+                Designing clarity across the entire product-building journey.
+            </h2>
+        </div>
+
+        <div class="initiatives">
+
+            <div class="initiative">
+
+                <div class="initiative-content">
+                    <h3>Builder Live Dashboard</h3>
+                    <p>
+                        Designed project visibility experiences that helped
+                        customers understand milestones, progress and delivery
+                        status in real time.
+                    </p>
+                </div>
+
+                <div class="image-block image-lg">
+                    Builder Live Dashboard
+                </div>
+
+            </div>
+
+            <div class="initiative">
+
+                <div class="initiative-content">
+                    <h3>Studio Workflow Redesign</h3>
+                    <p>
+                        Simplified workflow interactions to make software
+                        creation approachable for non-technical founders.
+                    </p>
+                </div>
+
+                <div class="image-block image-lg">
+                    Studio Workflow
+                </div>
+
+            </div>
+
+            <div class="initiative">
+
+                <div class="initiative-content">
+                    <h3>Project Tracking Experiences</h3>
+                    <p>
+                        Created structured project tracking systems that reduced
+                        uncertainty and improved customer confidence.
+                    </p>
+                </div>
+
+                <div class="image-block image-lg">
+                    Project Tracking
+                </div>
+
+            </div>
+
+            <div class="initiative">
+
+                <div class="initiative-content">
+                    <h3>Payments & Communication</h3>
+                    <p>
+                        Improved billing journeys, document management,
+                        feedback loops and stakeholder communication touchpoints.
+                    </p>
+                </div>
+
+                <div class="image-block image-lg">
+                    Billing & Collaboration
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Outcomes</div>
+            <h2 class="section-title">
+                Better transparency created better customer experiences.
+            </h2>
+        </div>
+
+        <div class="outcomes-grid">
+
+            <div class="outcome">
+                <h4>Improved Engagement</h4>
+                <p>
+                    Customers interacted more frequently with project progress
+                    experiences.
+                </p>
+            </div>
+
+            <div class="outcome">
+                <h4>Greater Visibility</h4>
+                <p>
+                    Clearer workflows enabled customers to understand delivery
+                    status at a glance.
+                </p>
+            </div>
+
+            <div class="outcome">
+                <h4>Reduced Support Needs</h4>
+                <p>
+                    Better self-service experiences lowered dependency on
+                    support teams.
+                </p>
+            </div>
+
+            <div class="outcome">
+                <h4>Increased Trust</h4>
+                <p>
+                    Transparency and clarity strengthened customer confidence
+                    throughout projects.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+
+        <div class="divider"></div>
+
+        <div style="padding-top:100px;" class="reflection">
+
+            <div class="section-label">Reflection</div>
+
+            <p>
+                This project reinforced the importance of designing for users
+                who may not understand the underlying technical systems. The
+                challenge was not adding more information—it was presenting
+                complexity in a way that felt approachable, transparent and
+                trustworthy while balancing both customer and business goals.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer-nav">
+    <a href="index.html">← Back to Work</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>chargeERP — Enterprise Workflow Platform Case Study</title>
+
+<style>
+:root{
+    --bg:#F7F3ED;
+    --surface:#FFFFFF;
+    --text:#121212;
+    --muted:#6B6B6B;
+    --line:rgba(0,0,0,.08);
+    --accent:#111111;
+    --max:1200px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(92%, var(--max));
+    margin:0 auto;
+}
+
+/* Navigation */
+
+.nav{
+    padding:32px 0;
+}
+
+.back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--muted);
+    font-size:.95rem;
+    transition:.2s ease;
+}
+
+.back-link:hover{
+    color:var(--text);
+}
+
+/* Hero */
+
+.hero{
+    padding:80px 0 120px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:80px;
+    align-items:end;
+}
+
+.eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.8rem;
+    color:var(--muted);
+    margin-bottom:24px;
+}
+
+.hero h1{
+    font-size:clamp(4rem,9vw,8rem);
+    line-height:.92;
+    letter-spacing:-.06em;
+    font-weight:700;
+    margin-bottom:24px;
+}
+
+.hero-subtitle{
+    font-size:clamp(1.2rem,2vw,1.6rem);
+    color:var(--muted);
+    max-width:700px;
+}
+
+.meta{
+    border-left:1px solid var(--line);
+    padding-left:40px;
+}
+
+.meta-item{
+    margin-bottom:28px;
+}
+
+.meta-label{
+    font-size:.78rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.meta-value{
+    font-size:1.1rem;
+    font-weight:500;
+}
+
+/* Sections */
+
+.section{
+    padding:120px 0;
+}
+
+.section-header{
+    margin-bottom:60px;
+}
+
+.section-label{
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-size:clamp(2.2rem,5vw,4rem);
+    line-height:1;
+    letter-spacing:-.04em;
+    max-width:900px;
+}
+
+.section-copy{
+    max-width:760px;
+    font-size:1.15rem;
+    color:var(--muted);
+    margin-top:24px;
+}
+
+/* Image Placeholder */
+
+.feature-image{
+    width:100%;
+    height:620px;
+    border-radius:28px;
+    background:
+        linear-gradient(
+            135deg,
+            #fefefe 0%,
+            #ece7df 100%
+        );
+    border:1px solid rgba(0,0,0,.06);
+    position:relative;
+    overflow:hidden;
+}
+
+.feature-image::before{
+    content:"Enterprise Product Experience";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:#888;
+    font-size:1rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.large-image{
+    height:720px;
+}
+
+.medium-image{
+    height:540px;
+}
+
+/* Two Column */
+
+.two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+}
+
+.text-block h3{
+    font-size:1.35rem;
+    margin-bottom:12px;
+}
+
+.text-block p{
+    color:var(--muted);
+}
+
+/* Cards */
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+}
+
+.card{
+    background:rgba(255,255,255,.65);
+    backdrop-filter:blur(8px);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:32px;
+}
+
+.card h4{
+    margin-bottom:10px;
+    font-size:1.1rem;
+}
+
+.card p{
+    color:var(--muted);
+}
+
+/* Initiatives */
+
+.initiatives{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.initiative{
+    padding:30px;
+    border-top:1px solid rgba(0,0,0,.12);
+}
+
+.initiative h4{
+    margin-bottom:12px;
+    font-size:1.15rem;
+}
+
+.initiative p{
+    color:var(--muted);
+}
+
+/* Outcomes */
+
+.outcomes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+}
+
+.metric{
+    padding:30px;
+    background:rgba(255,255,255,.6);
+    border-radius:22px;
+    border:1px solid var(--line);
+}
+
+.metric-number{
+    font-size:2.4rem;
+    font-weight:700;
+    letter-spacing:-.04em;
+    margin-bottom:8px;
+}
+
+.metric-label{
+    color:var(--muted);
+}
+
+/* Reflection */
+
+.reflection{
+    max-width:820px;
+}
+
+.reflection p{
+    font-size:1.2rem;
+    color:var(--muted);
+}
+
+/* Footer */
+
+.footer{
+    padding:120px 0 80px;
+}
+
+.footer-line{
+    height:1px;
+    background:var(--line);
+    margin-bottom:40px;
+}
+
+.footer-title{
+    font-size:clamp(2rem,4vw,3.5rem);
+    letter-spacing:-.04em;
+}
+
+/* Responsive */
+
+@media (max-width:1024px){
+
+    .hero-grid,
+    .two-col,
+    .card-grid,
+    .initiatives,
+    .outcomes{
+        grid-template-columns:1fr;
+    }
+
+    .meta{
+        border-left:none;
+        border-top:1px solid var(--line);
+        padding-left:0;
+        padding-top:30px;
+    }
+
+    .feature-image{
+        height:420px;
+    }
+
+    .large-image{
+        height:500px;
+    }
+}
+
+@media (max-width:768px){
+
+    .hero{
+        padding:40px 0 80px;
+    }
+
+    .section{
+        padding:80px 0;
+    }
+
+    .feature-image{
+        border-radius:20px;
+    }
+
+    .card,
+    .metric{
+        padding:24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+    <div class="container">
+        <a href="index.html" class="back-link">
+            ← Back to Work
+        </a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container">
+        <div class="hero-grid">
+
+            <div>
+                <div class="eyebrow">Enterprise UX Case Study</div>
+
+                <h1>chargeERP</h1>
+
+                <p class="hero-subtitle">
+                    Designing enterprise workflow experiences for billing,
+                    operations and business management.
+                </p>
+            </div>
+
+            <div class="meta">
+                <div class="meta-item">
+                    <div class="meta-label">Role</div>
+                    <div class="meta-value">Product Designer</div>
+                </div>
+
+                <div class="meta-item">
+                    <div class="meta-label">Product</div>
+                    <div class="meta-value">Enterprise Workflow Platform</div>
+                </div>
+
+                <div class="meta-item">
+                    <div class="meta-label">Focus</div>
+                    <div class="meta-value">Systems Thinking • Workflow Design • Enterprise UX</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+        <div class="feature-image large-image"></div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Overview</div>
+            <h2 class="section-title">
+                Building a platform that helps businesses manage operations,
+                billing and organizational workflows at scale.
+            </h2>
+
+            <p class="section-copy">
+                chargeERP was designed to support complex enterprise operations,
+                streamline business processes and improve visibility across
+                teams. Collaboration with product, engineering and business
+                stakeholders ensured workflows aligned with real operational
+                needs.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Challenge</div>
+            <h2 class="section-title">
+                Reducing friction across highly complex enterprise workflows.
+            </h2>
+        </div>
+
+        <div class="card-grid">
+
+            <div class="card">
+                <h4>Complex Workflows</h4>
+                <p>
+                    Enterprise processes required users to navigate multiple
+                    interconnected tasks and systems.
+                </p>
+            </div>
+
+            <div class="card">
+                <h4>Information Density</h4>
+                <p>
+                    Large volumes of operational data created cognitive burden
+                    and reduced discoverability.
+                </p>
+            </div>
+
+            <div class="card">
+                <h4>User Roles & Permissions</h4>
+                <p>
+                    Different teams required tailored experiences based on
+                    responsibilities and access levels.
+                </p>
+            </div>
+
+            <div class="card">
+                <h4>Operational Inefficiencies</h4>
+                <p>
+                    Manual processes and fragmented interfaces slowed execution
+                    and decision making.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="feature-image medium-image"></div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Research & Insights</div>
+
+            <h2 class="section-title">
+                Understanding enterprise behaviors before designing solutions.
+            </h2>
+        </div>
+
+        <div class="two-col">
+
+            <div class="text-block">
+                <h3>User Interviews</h3>
+                <p>
+                    Conducted interviews across operational, finance and
+                    management teams to identify workflow bottlenecks and
+                    recurring pain points.
+                </p>
+            </div>
+
+            <div class="text-block">
+                <h3>Process Mapping</h3>
+                <p>
+                    Visualized end-to-end business processes to uncover
+                    dependencies, inefficiencies and system gaps.
+                </p>
+            </div>
+
+            <div class="text-block">
+                <h3>Stakeholder Workshops</h3>
+                <p>
+                    Facilitated alignment sessions with business leaders and
+                    product teams to define priorities and success metrics.
+                </p>
+            </div>
+
+            <div class="text-block">
+                <h3>Workflow Analysis</h3>
+                <p>
+                    Evaluated task flows and information architecture to
+                    identify opportunities for simplification.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Design Strategy</div>
+
+            <h2 class="section-title">
+                Designing systems that scale while making complexity feel
+                manageable.
+            </h2>
+        </div>
+
+        <div class="two-col">
+
+            <div class="text-block">
+                <h3>Simplify Enterprise Complexity</h3>
+                <p>
+                    Structured experiences around user goals rather than system
+                    architecture.
+                </p>
+            </div>
+
+            <div class="text-block">
+                <h3>Improve Discoverability</h3>
+                <p>
+                    Enhanced navigation patterns and information hierarchy for
+                    faster task completion.
+                </p>
+            </div>
+
+            <div class="text-block">
+                <h3>Reduce Cognitive Load</h3>
+                <p>
+                    Introduced progressive disclosure and contextual actions to
+                    improve usability.
+                </p>
+            </div>
+
+            <div class="text-block">
+                <h3>Create Scalable Patterns</h3>
+                <p>
+                    Established reusable design foundations that supported
+                    future growth and consistency.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="feature-image large-image"></div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Key UX Initiatives</div>
+
+            <h2 class="section-title">
+                Core initiatives focused on productivity, visibility and
+                operational control.
+            </h2>
+        </div>
+
+        <div class="initiatives">
+
+            <div class="initiative">
+                <h4>Dashboard Redesign</h4>
+                <p>
+                    Surfaced critical information through role-focused
+                    dashboards and actionable insights.
+                </p>
+            </div>
+
+            <div class="initiative">
+                <h4>Workflow Management</h4>
+                <p>
+                    Streamlined complex processes into clearer, task-driven
+                    experiences.
+                </p>
+            </div>
+
+            <div class="initiative">
+                <h4>Reporting Experiences</h4>
+                <p>
+                    Improved access to operational and financial reporting
+                    capabilities.
+                </p>
+            </div>
+
+            <div class="initiative">
+                <h4>Data-Heavy Interfaces</h4>
+                <p>
+                    Enhanced readability and scanning through improved hierarchy
+                    and visual organization.
+                </p>
+            </div>
+
+            <div class="initiative">
+                <h4>Role-Based Access</h4>
+                <p>
+                    Tailored experiences and permissions around organizational
+                    responsibilities.
+                </p>
+            </div>
+
+            <div class="initiative">
+                <h4>Operations Management</h4>
+                <p>
+                    Created tools that improved visibility into daily business
+                    activities and workflows.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Outcomes</div>
+
+            <h2 class="section-title">
+                Delivering a more efficient and scalable enterprise experience.
+            </h2>
+        </div>
+
+        <div class="outcomes">
+
+            <div class="metric">
+                <div class="metric-number">01</div>
+                <div class="metric-label">Improved Operational Efficiency</div>
+            </div>
+
+            <div class="metric">
+                <div class="metric-number">02</div>
+                <div class="metric-label">Better Platform Usability</div>
+            </div>
+
+            <div class="metric">
+                <div class="metric-number">03</div>
+                <div class="metric-label">Reduced Training Effort</div>
+            </div>
+
+            <div class="metric">
+                <div class="metric-number">04</div>
+                <div class="metric-label">Scalable Workflow Foundations</div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="feature-image medium-image"></div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-header">
+            <div class="section-label">Reflection</div>
+
+            <h2 class="section-title">
+                Enterprise design is ultimately about helping people navigate
+                complexity with confidence.
+            </h2>
+        </div>
+
+        <div class="reflection">
+            <p>
+                This project reinforced the importance of systems thinking,
+                stakeholder alignment and scalable design patterns. By focusing
+                on workflows instead of screens, the experience evolved into a
+                platform capable of supporting growing operational demands while
+                remaining intuitive for everyday users.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+
+        <div class="footer-line"></div>
+
+        <h2 class="footer-title">
+            chargeERP
+        </h2>
+
+    </div>
+</footer>
+
+</body>
+</html>
